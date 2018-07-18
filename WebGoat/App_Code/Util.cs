@@ -5,7 +5,7 @@ using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
-using EnvDTE;
+//using EnvDTE;
 using Process = System.Diagnostics.Process;
 
 namespace OWASP.WebGoat.NET.App_Code
@@ -16,7 +16,6 @@ namespace OWASP.WebGoat.NET.App_Code
         
         public static int RunProcessWithInput(string cmd, string args, string input)
         {
-            Regex rgx = new Regex(@"^[a-zA-Z0-9]+$");
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = cmd,
@@ -28,9 +27,6 @@ namespace OWASP.WebGoat.NET.App_Code
             };
 
 
-
-            if (rgx.IsMatch(startInfo.FileName) && rgx.IsMatch(startInfo.Arguments))
-            {
                 using (Process process = new Process())
                 {
                     process.EnableRaisingEvents = true;
@@ -87,7 +83,7 @@ namespace OWASP.WebGoat.NET.App_Code
                         return 1;
                     }
                 }
-            }
+            
         }
     }
 }
